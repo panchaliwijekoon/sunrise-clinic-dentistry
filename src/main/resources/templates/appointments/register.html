@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f8;
+        }
+        .container {
+            width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 70px 0 15px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 12px 20px;
+            cursor: pointer;
+        }
+        label{
+            display: block;
+            margin-bottom: 6px;
+        }
+        input, textarea{
+            width: 100%;
+            padding: 10px;
+            margin: 0 0 18px 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Register Appointment</h2>
+    <form th:action="@{/appointments/save}"  method="post">
+        <label for="patientName"> Patient Name</label>
+        <input id="patientName" type="text" name="patientName" required>
+
+        <label for="dentistName">Dentist Name</label>
+        <input id="dentistName" type="text" name="dentistName" required>
+
+        <label for="appointmentDate">Appointment Date</label>
+        <input id="appointmentDate" type="date" name="appointmentDate" required>
+
+        <label for="appointmentTime">Appointment Time</label>
+        <input id="appointmentTime" type="time" name="appointmentTime" required>
+
+        <label for="notes">Notes</label>
+        <textarea id="notes" type="text" name="notes" required> </textarea>
+
+        <button type="submit">Register Appointment</button>
+    </form>
+</div>
+</body>
+</html>

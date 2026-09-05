@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment receipt</title>
+    <style>
+        body{
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #aac8d6;
+        }
+        .receipt {
+            width: 500px;
+            margin: 60px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        h1{
+            text-align: center;
+            color: #1678b8;
+        }
+        h2{
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .row{
+            margin: 15px 0;
+            font-size: 17px;
+        }
+        .total{
+            font-weight: bold;
+            font-size: 22px;
+            color: #1678b8;
+            margin-top: 25px;
+        }
+        .btn{
+            display: inline-block;
+            padding: 11px 18px;
+            background: #1678b8;
+            color: #fff;
+            border: none;
+            text-decoration: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+        @media print {
+            .button{
+                display: none;
+            }
+            .no-print{display: none!important;}
+            body{ background: white
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="receipt">
+    <h1>Sunrise Dental Clinic</h1>
+    <h2>Payment Receipt</h2>
+    <hr>
+    <div class="row">
+        <strong>Receipt ID:</strong>
+        <span th:text="${invoice.id}"></span>
+    </div>
+    <div class="row">
+        <strong>Date: </strong>
+        <span th:text="${invoice.billDate}"></span>
+    </div>
+    <div class="row">
+        <strong>Patient:</strong>
+        <span th:text="${invoice.patientName}"></span>
+    </div>
+    <div class="row">
+        <strong>Treatment:</strong>
+        <span th:text="${invoice.treatment}"></span>
+    </div>
+    <div class="row">
+        <strong>Amount: Rs. </strong>
+        <span th:text="${invoice.amount}"></span>
+    </div>
+    <div class="row">
+        <strong>Discount: Rs.</strong>
+        <span th:text="${invoice.discount}"></span>
+    </div>
+    <div class="total">
+        Total: Rs.  <span th:text="${invoice.total}"></span>
+    </div>
+    <br>
+    <div class="no-print">
+        <button class="btn" th:onclick="'window.print()'"> Print Receipt </button>
+        <a class="btn" href="/billing"> New Bill </a>
+    </div>
+    <a class="btn" href="/dashboard"> Home </a>
+</div>
+</body>
+</html>

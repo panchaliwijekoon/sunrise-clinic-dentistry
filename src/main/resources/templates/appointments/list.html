@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointments</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 40px;
+            background: #f4f7f9;
+        }
+        .container{
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #cccccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th{
+            background: #eaf7f8;
+        }
+        .top-buttons{
+            margin-bottom: 20px;
+        }
+        .btn{
+            display: inline-block;
+            padding: 10px 16px;
+            margin-right: 8px;
+            background: #1877b9;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover{
+            background: #125c91;
+        }
+        .edit-btn{
+            background: #e59b18;
+            display: inline-block;
+            padding: 7px 14px;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .cancel-btn{
+            display: inline-block;
+            padding: 7px 14px;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            background: #c0392b;
+        }
+        .cancel-btn:hover{
+            background: #922b21;
+        }
+    </style>
+</head>
+<body>
+<h2>Dental Appointments</h2>
+
+<div class="top-buttons">
+    <a class="btn" href="/dashboard"> <- Home </a>
+    <a class="btn" href="/appointments/register"> + Register Apopintment</a>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Patient</th>
+        <th>Dentist</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Notes</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="appointment : ${appointments}">
+    <td th:text="${appointment.id}"></td>
+    <td th:text="${appointment.patientName}"></td>
+    <td th:text="${appointment.dentistName}"></td>
+    <td th:text="${appointment.appointmentDate}"></td>
+    <td th:text="${appointment.appointmentTime}"></td>
+    <td th:text="${appointment.status}"></td>
+    <td th:text="${appointment.notes}"></td>
+        <td>
+            <a class="edit-btn" th:href="@{/appointments/edit/{id}(id=${appointment.id})}">Edit</a>
+        </td>
+        <td>
+            <a class="btn cancel-btn"
+               th:href="@{/appointments/cancel/{id}(id=${appointment.id})}"
+               onclick="return confirm('Are you sure you want to cancel this appointment?')">
+                Cancel
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

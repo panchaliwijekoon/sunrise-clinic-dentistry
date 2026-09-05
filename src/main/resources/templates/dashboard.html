@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sunrise Dental Clinic</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: lightgray;
+            margin: 0;
+        }
+        .container {
+            width: 700px;
+            margin: 60px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 1);
+        }
+        h1{
+            text-align: center;
+        }
+        h2{
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .menu{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .button{
+            display: block;
+            padding: 15px;
+            background: #1877b9;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 16px;
+        }
+        .button:hover{
+            background: #125c91;
+        }
+        .disabled{
+            background: #999;
+        }
+        .menu form{ margin: 0;}
+        .menu button.button{
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+<h1>🦷 Sunrise Dental Clinic</h1>
+<h2>Dashboard</h2>
+
+    <div class="menu">
+        <a class="button" href="/appointments/register">Register Appointment</a>
+        <a class="button" href="/appointments">Search/View Appointments</a>
+        <a class="button" href="/appointments">Update Appointments</a>
+        <a class="button" href="/billing">Calculate bill </a>
+        <a class="button" href="/appointments">View Appointments</a>
+        <a class="button" href="/reports">Reports</a>
+        <a class="button" href="#">help</a>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="button">Logout</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
