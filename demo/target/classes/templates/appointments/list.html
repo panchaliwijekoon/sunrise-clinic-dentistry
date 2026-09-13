@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 34px;
+            margin-bottom: 25px;
+        }
+
+        .top-buttons {
+            margin-bottom: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #2384c6;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 18px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #d0d0d0;
+            padding: 14px 16px;
+            text-align: left;
+        }
+
+        th {
+            background: #eaf5f8;
+            font-size: 17px;
+        }
+
+        tr:hover {
+            background: #f9fcfd;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .edit-btn {
+            background: #f0a51a;
+            color: white;
+            padding: 9px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .cancel-btn {
+            background: #cf3c30;
+            color: white;
+            padding: 9px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .scheduled {
+            background: #dcefff;
+            color: #176fa6;
+        }
+
+        .cancelled {
+            background: #ffe0e0;
+            color: #b3261e;
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+<h2>Dental Appointments</h2>
+
+<div class="top-buttons">
+    <a class="btn" href="/dashboard"> <- Home </a>
+    <a class="btn" href="/appointments/register"> + Register Apopintment</a>
+</div>
+
+
+<div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search by patient, dentist or status..." onkeyup="searchAppointment()">
+
+    <button type="button" onclick="searchAppointments()">Search</button>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Patient</th>
+        <th>Dentist</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Notes</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="appointment : ${appointments}">
+    <td th:text="${appointment.id}"></td>
+    <td th:text="${appointment.patientName}"></td>
+    <td th:text="${appointment.dentistName}"></td>
+    <td th:text="${appointment.appointmentDate}"></td>
+    <td th:text="${appointment.appointmentTime}"></td>
+    <td th:text="${appointment.status}"></td>
+    <td th:text="${appointment.notes}"></td>
+        <td>
+            <a class="edit-btn" th:href="@{/appointments/edit/{id}(id=${appointment.id})}">Edit</a>
+        </td>
+        <td>
+            <a class="btn cancel-btn"
+               th:href="@{/appointments/cancel/{id}(id=${appointment.id})}"
+               onclick="return confirm('Are you sure you want to cancel this appointment?')">
+                Cancel
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    function searchAppointments() {
+
+        let input = document.getElementById("searchInput");
+        let filter = input.value.toLowerCase();
+
+        let table = document.querySelector("table");
+        let rows = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < rows.length; i++) {
+
+            let rowText = rows[i].textContent.toLowerCase();
+
+            if (rowText.includes(filter)) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
+</script>
+</body>
+</html>

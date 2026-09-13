@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reports by Date</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #eef7fb;
+        }
+
+        .container {
+            width: 700px;
+            margin: 70px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2384c6;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 12px;
+        }
+
+        button,
+        .btn {
+            padding: 12px 20px;
+            background: #2384c6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover,
+        .btn:hover {
+            background: #176fa6;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Reports by Date</h1>
+
+    <p class="subtitle">
+        Select a date range to generate appointment and billing statistics
+    </p>
+
+    <form action="/reports/by-date/result" method="get">
+
+        <label for="fromDate">From Date</label>
+        <input
+                type="date"
+                id="fromDate"
+                name="fromDate"
+                required>
+
+        <label for="toDate">To Date</label>
+        <input
+                type="date"
+                id="toDate"
+                name="toDate"
+                required>
+
+        <div class="buttons">
+
+            <button type="submit">
+                Generate Report
+            </button>
+
+            <a href="/reports" class="btn">
+                ← Back to Reports
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Appointment</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7f9;
+        }
+        .container {
+            width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        input,textarea{
+            width: 100%;
+            padding: 10px;
+            margin: 7px 0 15px;
+            box-sizing: border-box;
+        }
+        button, .btn{
+            padding: 10px 18px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button{
+            background: #1877b9;
+            color: white;
+        }
+        .btn{
+            background: #777;
+            color: white;
+        }
+        .btn:hover{
+            background: #5cb85c;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Update Appointment</h2>
+    <form th:action="@{/appointments/update/{id}(id=${appointment.id})}" method="post">
+
+        <label for="patientName">Patient Name</label>
+        <input type="text" name="patientName" id="patientName" th:value="${appointment.patientName}" required>
+        <label for="dentistName"> Dentist Name </label>
+        <input id="dentistName" type="text" name="dentistName" th:value="${appointment.dentistName}" required>
+        <label for="appointmentDate"> Appointment Date </label>
+        <input id="appointmentDate" type="date" name="appointmentDate" th:value="${appointment.appointmentDate}" required>
+        <label for="appointmentTime"> Appointment Time </label>
+        <input id="appointmentTime" type="time" name="appointmentTime" th:value="${appointment.appointmentTime}" require>
+        <label for="notes"> Appointment Notes </label>
+        <textarea id="notes" type="text" name="notes" th:value="${appointment.notes}" required></textarea>
+        <button type="submit" class="btn">Save changes </button>
+        <a class="btn" th:href="@{/appointments/}">Cancel</a>
+
+    </form>
+</div>
+</body>
+</html>

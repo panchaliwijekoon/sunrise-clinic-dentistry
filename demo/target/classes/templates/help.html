@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Help - Sunrise Dental Clinic</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #eaf7ff, #f8fbff);
+            color: #222;
+        }
+
+        .page-container {
+            width: 85%;
+            max-width: 950px;
+            margin: 40px auto;
+        }
+
+        .header-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header-card h1 {
+            margin: 0;
+            color: #1f7fbb;
+            font-size: 36px;
+        }
+
+        .header-card p {
+            margin-top: 8px;
+            color: #777;
+        }
+
+        .help-card {
+            background: white;
+            padding: 24px 28px;
+            border-radius: 16px;
+            margin-bottom: 18px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            border-left: 6px solid #2b8dcc;
+        }
+
+        .help-card h2 {
+            margin-top: 0;
+            color: #176fa6;
+            font-size: 24px;
+        }
+
+        .help-card p,
+        .help-card li {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        ol {
+            padding-left: 22px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 20px;
+            background: #2384c6;
+            color: white;
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background: #176fa6;
+        }
+
+        .tip {
+            background: #eef8ff;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-top: 12px;
+            color: #315a73;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page-container">
+
+    <div class="header-card">
+        <h1>🦷 Sunrise Dental Clinic Help</h1>
+        <p>Quick guide for using the clinic management system</p>
+    </div>
+
+    <div class="help-card">
+        <h2>1. Login</h2>
+        <p>Enter the provided username and password, then click <strong>Sign In</strong>.</p>
+    </div>
+
+    <div class="help-card">
+        <h2>2. Register Appointment</h2>
+        <ol>
+            <li>Open the dashboard.</li>
+            <li>Select <strong>Register Appointment</strong>.</li>
+            <li>Enter the patient name.</li>
+            <li>Select the dentist.</li>
+            <li>Select the appointment date and time.</li>
+            <li>Click <strong>Register Appointment</strong>.</li>
+        </ol>
+    </div>
+
+    <div class="help-card">
+        <h2>3. Search / View Appointments</h2>
+        <ol>
+            <li>Select <strong>Search/View Appointments</strong>.</li>
+            <li>Use the search box to search by patient, dentist, or status.</li>
+            <li>Select <strong>Edit</strong> to update an appointment.</li>
+            <li>Select <strong>Cancel</strong> to cancel an appointment.</li>
+        </ol>
+    </div>
+
+    <div class="help-card">
+        <h2>4. Calculate Bill</h2>
+        <ol>
+            <li>Select <strong>Calculate Bill</strong>.</li>
+            <li>Enter the patient name.</li>
+            <li>Select the treatment.</li>
+            <li>Enter the consultation fee and treatment charge.</li>
+            <li>Enter a discount if required.</li>
+            <li>Select the payment method.</li>
+            <li>Click <strong>Calculate Bill</strong>.</li>
+        </ol>
+
+        <div class="tip">
+            Tip: Make sure the discount does not exceed the subtotal.
+        </div>
+    </div>
+
+    <div class="help-card">
+        <h2>5. Print Receipt</h2>
+        <p>
+            After calculating the bill, click <strong>Print Receipt</strong>.
+            You can print the receipt directly or save it as a PDF.
+        </p>
+    </div>
+
+    <div class="help-card">
+        <h2>6. Reports</h2>
+        <p>
+            Select <strong>Reports</strong> from the dashboard to view appointment
+            totals, scheduled appointments, cancelled appointments, bills, and revenue.
+        </p>
+    </div>
+
+    <div class="help-card">
+        <h2>7. Logout</h2>
+        <p>
+            Select <strong>Logout</strong> from the dashboard to securely leave the system.
+        </p>
+    </div>
+
+    <a href="/dashboard" class="back-button">← Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>
